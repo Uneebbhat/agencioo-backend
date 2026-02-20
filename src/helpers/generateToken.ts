@@ -3,17 +3,20 @@ import { JWT_SECRET } from "../config/constants";
 import ErrorHandler from "../utils/ErrorHandler";
 import { Response } from "express";
 
-const generateToken = (res: Response, payload: any) => {
+interface Payload {
+  id: string;
+  name: string;
+}
+
+const generateToken = (res: Response, payload: Payload) => {
   if (!JWT_SECRET) {
     ErrorHandler.send(res, 500, "JWT Secret is not defined.");
   }
 
   const token = jwt.sign(
     {
-      userId: payload._id,
+      userId: payload.id,
       name: payload.name,
-      userEmail: payload.email,
-      role: payload.role,
     },
     JWT_SECRET as string,
     {

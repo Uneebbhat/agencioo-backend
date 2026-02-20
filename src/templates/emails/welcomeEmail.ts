@@ -1,33 +1,42 @@
-export const welcomeEmail = (userName: string) => ({
-  subject: "Welcome to [Your Company Name] – Let’s Get Started! 🎉",
-  text: `Dear ${userName},
+export const welcomeEmail = (name: string) => ({
+  subject: "Welcome to Agencioo",
+  html: `
+  <div style="font-family: Arial, sans-serif; background-color: #f9fafb; padding: 40px 20px;">
+    <div style="max-width: 520px; margin: 0 auto; background: #ffffff; padding: 32px; border-radius: 8px;">
+      
+      <h2 style="margin: 0 0 16px 0; color: #111827;">
+        Welcome, ${name}
+      </h2>
 
-Welcome to [Your Company Name]! We’re excited to have you on board. 🚀
+      <p style="margin: 0 0 16px 0; color: #4b5563; font-size: 14px; line-height: 1.6;">
+        Your Agencioo account has been successfully created. 
+        You can now start managing your workspace, team, and projects in one centralized platform.
+      </p>
 
-Your account has been successfully created, and you’re all set to explore everything we have to offer. Here’s what you can do next:
+      <p style="margin: 0 0 24px 0; color: #4b5563; font-size: 14px; line-height: 1.6;">
+        Set up your workspace and invite your team to begin.
+      </p>
 
-✅ Complete your profile to get personalized recommendations
-✅ Explore our features and get familiar with our platform
-✅ Get started with [briefly mention a key feature or benefit]
+      <div style="text-align: left;">
+        <a href="https://localhost:3000/dashboard"
+           style="display: inline-block; padding: 10px 18px; font-size: 14px;
+                  color: #ffffff; background-color: #111827; border-radius: 8px;
+                  text-decoration: none;">
+          Go to Dashboard
+        </a>
+      </div>
 
-👉 <a href="https://www.google.com/" style="cursor: pointer;">
-  <button
-   style="display: inline-block; padding: 8px 16px; font-size: 16px; 
-          color: #ffffff; background-color: #18181b; border-radius: 8px; text-decoration: none; 
-          transition: background-color 0.2s ease-in-out; font-family: Inter, sans-serif; outline: none; border: 0; cursor: pointer;"
-   onmouseover="this.style.backgroundColor='#2f2f31'"
-   onmouseout="this.style.backgroundColor='#18181b'">
-   Get Started
-</button>
-</a>
+      <hr style="margin: 32px 0; border: none; border-top: 1px solid #e5e7eb;" />
 
+      <p style="margin: 0; font-size: 12px; color: #9ca3af;">
+        If you did not create this account, please ignore this email.
+      </p>
 
-If you didn’t sign up for this account, please ignore this email or contact us at [support email].
+      <p style="margin: 8px 0 0 0; font-size: 12px; color: #9ca3af;">
+        © ${new Date().getFullYear()} Agencioo. All rights reserved.
+      </p>
 
-Have any questions? We’re here to help! 💡
-
-Cheers,
-[Your Company Name]
-[Your Website URL]
-[Your Social Links]`,
+    </div>
+  </div>
+  `,
 });

@@ -6,13 +6,9 @@ import morgan from "morgan";
 import chalk from "chalk";
 import rateLimit from "express-rate-limit";
 import cookieParser from "cookie-parser";
-import dbConnect from "./services/dbConnect";
-import userRoutes from "./routes/userRoutes.routes";
 import ErrorHandler from "./utils/ErrorHandler";
 
 const app: Application = express();
-
-dbConnect();
 
 // Helmet middleware for adding security headers to all responses
 app.use(helmet());
@@ -70,14 +66,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Routes
-app.use("/api", userRoutes);
+// app.use("/api");
 
 app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-app.all("/*splat", (req: Request, res: Response) => {
-  ErrorHandler.send(res, 404, `The URL ${req.originalUrl} doesn't exist`);
-});
+// app.all("*", (req: Request, res: Response) => {
+//   ErrorHandler.send(res, 404, `The URL ${req.originalUrl} doesn't exist`);
+// });
 
 export default app;
